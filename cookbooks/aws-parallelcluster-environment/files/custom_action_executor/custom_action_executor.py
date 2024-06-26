@@ -735,7 +735,8 @@ class ActionRunner:
         except (KeyError, ClientError, botocore.exceptions.ParamValidationError) as e:
             logging.debug(e)
             self.custom_logger.error_exit(
-                "Failed to get the stack status, check the HeadNode instance profile's IAM policies"
+                f"Node of type: '{self.conf.node_type}' failed to get the stack status. " 
+                f"Check the {self.conf.node_type} instance profile's IAM policies"
             )
         return stack_status
 
